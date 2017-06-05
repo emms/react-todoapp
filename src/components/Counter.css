@@ -1,0 +1,9 @@
+.Counter {
+  font-size: 30px;
+  font-family: 'Montserrat', serif;
+  font-weight: normal;
+  opacity: 0.5;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}

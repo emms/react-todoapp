@@ -2,8 +2,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #CFE3C8;
+  background-color: #CCD3DB;
   width: 100%;
   height: 100%;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-family: 'Montserrat', serif;
+  font-size: 25px;
+  font-weight: normal;
+  letter-spacing: normal;
+  text-transform: uppercase;
+}
+
+.input-container {
+  display: flex;
+}
+
+.input-container input {
+  flex: 2;
+}
+
+.input-container .Button {
+  flex: 1;
+  margin-left: 10px;
 }

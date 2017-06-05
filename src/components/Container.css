@@ -1,9 +1,11 @@
 .Container {
-  background-color: #FFF;
-  border-radius: 10px;
+  background-color: #799BC7;
+  color: #FFF;
+  border-radius: 5px;
   padding: 30px;
   display: flex;
   flex-direction: column;
   width: 50vw;
   height: 40vw;
+  position: relative;
 }

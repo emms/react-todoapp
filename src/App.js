@@ -4,24 +4,28 @@ import './App.css'
 import Container from './components/Container'
 import Input from './components/Input'
 import ToDoList from './components/ToDoList'
+import ToDoListItem from './components/ToDoListItem'
 import Button from './components/Button'
+import Counter from './components/Counter'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      toDos: [],
+      completedItems: []
+    }
+
     this.inputRef = null
     this.addTodo = this.addTodo.bind(this)
-    this.state = {
-      toDos: []
-    }
+    this.toggleCompleted = this.toggleCompleted.bind(this)
   }
 
   addTodo() {
     if (this.inputRef.value) {
       const newToDo = {
         text: this.inputRef.value,
-        status: 'incomplete'
       }
       this.setState({
         toDos: this.state.toDos.concat([newToDo])
@@ -30,23 +34,51 @@ class App extends Component {
     }
   }
 
+  toggleCompleted(e, i) {
+    if (e.target.type !== 'checkbox') {
+      e.preventDefault()
+    }
+    const index = this.state.completedItems.indexOf(i)
+    if (index === -1) {
+      this.setState({
+        completedItems: this.state.completedItems.concat([i])
+      })
+    } else {
+      this.setState({
+        completedItems: this.state.completedItems.filter((item) => (item !== i))
+      })
+    }
+  }
+
   render() {
     return (
       <Container>
-        <h1>React To Do app</h1>
-        <Input
-          name="todoinput"
-          placeholder="What do you need to do?"
-          inputRef={ dom => this.inputRef = dom }
-        />
-        <Button
-          onClick={ this.addTodo }
-          text="Add"
-        />
-        <ToDoList
-          toDos={ this.state.toDos }
-          >
+        <h1>React To Do App</h1>
+        <div className="input-container">
+          <Input
+            name="todoinput"
+            placeholder="What do you need to do?"
+            inputRef={ dom => this.inputRef = dom }
+          />
+          <Button
+            onClick={ this.addTodo }
+            text="Add"
+          />
+        </div>
+        <ToDoList>
+          { this.state.toDos.map((toDo, i) => (
+            <ToDoListItem
+              key={ i }
+              text={ toDo.text }
+              onClick={ (e) => this.toggleCompleted(e, i) }
+              completed={ this.state.completedItems.indexOf(i) !== -1 }
+            />
+          )) }
         </ToDoList>
+        <Counter
+          completed={ this.state.completedItems.length }
+          total={ this.state.toDos.length }
+        />
       </Container>
     )
   }
