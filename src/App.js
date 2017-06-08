@@ -22,7 +22,8 @@ class App extends Component {
     this.toggleCompleted = this.toggleCompleted.bind(this)
   }
 
-  addTodo() {
+  addTodo(e) {
+    e.preventDefault()
     if (this.inputRef.value) {
       const newToDo = {
         text: this.inputRef.value,
@@ -55,15 +56,16 @@ class App extends Component {
       <Container>
         <h1>React To Do App</h1>
         <div className="input-container">
-          <Input
-            name="todoinput"
-            placeholder="What do you need to do?"
-            inputRef={ dom => this.inputRef = dom }
-          />
-          <Button
-            onClick={ this.addTodo }
-            text="Add"
-          />
+          <form onSubmit={ this.addTodo }>
+            <Input
+              name="todoinput"
+              placeholder="What do you need to do?"
+              inputRef={ dom => this.inputRef = dom }
+            />
+            <Button
+              text="Add"
+            />
+          </form>
         </div>
         <ToDoList>
           { this.state.toDos.map((toDo, i) => (

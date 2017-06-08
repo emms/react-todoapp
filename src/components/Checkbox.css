@@ -1,0 +1,19 @@
+.Checkbox input {
+  display: none;
+}
+
+.Checkbox div {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #FFF;
+  margin-right: 10px;
+}
+
+.Checkbox input:checked + div {
+  background-color: #32f4d4;
+}
+
+.Checkbox {
+
+}

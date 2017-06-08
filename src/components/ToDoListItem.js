@@ -11,16 +11,13 @@ class ToDoListItem extends Component {
 
   render() {
     const classes = classNames('ToDoListItem', { 'ToDoListItem-completed' : this.props.completed })
-    console.log(this.props.completed)
     return (
-      <div className={ classes } onClick={ this.props.onClick }>
-        <label>
+        <label className={ classes } onClick={ this.props.onClick }>
           <Checkbox
             checked={ this.props.completed }
           />
           { this.props.text }
         </label>
-      </div>
     )
   }
 }

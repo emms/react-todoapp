@@ -2,10 +2,9 @@
   text-decoration: line-through;
 }
 
-.ToDoListItem label {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
+.ToDoListItem {
   user-select: none;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }

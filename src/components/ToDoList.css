@@ -1,3 +1,4 @@
 .ToDoList {
   text-align: left;
+  overflow: hidden;
 }
